@@ -71,12 +71,11 @@ img { max-width: 100%; display: block; }
 .store-name {
   font-size: 28px;
   color: #F6EEFB;
+  margin: 0;
 }
-.tagline {
-  margin-top: 6px;
-  font-size: 15px;
-  color: #EBCBEF;
-  font-style: italic;
+
+  
+ 
 }
 .search-row {
   margin-top: 18px;
