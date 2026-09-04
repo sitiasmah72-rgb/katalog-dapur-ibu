@@ -1,16 +1,9 @@
 // ============================================================
 // KONFIGURASI SUPABASE
-// Isikan SUPABASE_URL dan SUPABASE_ANON_KEY di bawah.
-// Dapatkan nilai ini dari: Supabase Dashboard > Project Settings > API
-//
-// PENTING: "anon key" ini SELAMAT untuk diletakkan di sini (front-end),
-// kerana ia direka untuk didedahkan secara terbuka — keselamatan
-// sebenar dikawal oleh Row Level Security (RLS) yang telah disediakan
-// dalam schema.sql. JANGAN sekali-kali letakkan "service_role key" di sini.
 // ============================================================
 
-const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
-const SUPABASE_ANON_KEY = "YOUR-ANON-PUBLIC-KEY";
+const SUPABASE_URL = "https://prqajitqdccmrrfrrdeg.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_YzkpNXszyMINwminhlULJg_u2DYL6NM";
 
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
