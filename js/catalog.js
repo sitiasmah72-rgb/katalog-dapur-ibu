@@ -34,7 +34,7 @@ async function init() {
 
 function applySettingsToDOM() {
   const s = state.settings;
- document.getElementById("storeName").innerHTML = `<img src="logo-rumah-dessert.png" alt="Rumah Dessert Dapur Ibu" style="max-width:200px;height:auto;">` + (s.store_name || "Rumah Dessert Dapur Ibu");
+ document.getElementById("storeName").innerHTML = `<img src="logo-rumah-dessert.png" alt="Rumah Dessert Dapur Ibu" style="max-width:150px;height:auto;">`;
   document.getElementById("footerStoreName").textContent = s.store_name || "Rumah Dessert Dapur Ibu";
   document.getElementById("tagline").textContent = s.tagline || "";
   document.title = `${s.store_name || "Katalog"} — Katalog`;
