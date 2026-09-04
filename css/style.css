@@ -1,20 +1,20 @@
 /* ==============================================================
    Rumah Dessert Dapur Ibu — Design tokens
-   Palette: warm honey + deep espresso + dusty rose (bukan cream/terracotta klise)
+   Palette: purple / light purple / pink / gold
    Type: "Fraunces" (serif, display) + "Work Sans" (sans, body)
    ============================================================== */
 
 :root {
-  --espresso: #2B1B14;
-  --espresso-soft: #4A3527;
-  --peach-bg: #FBF2E9;
+  --espresso: #3D1B4D;
+  --espresso-soft: #6B4A7A;
+  --peach-bg: #F6EEFB;
   --panel: #FFFFFF;
-  --honey: #C88A2E;
-  --honey-deep: #A56E1E;
-  --rose: #B65C4B;
+  --honey: #C9A227;
+  --honey-deep: #A8850A;
+  --rose: #E0699E;
   --sage: #6E7F5C;
   --sold-out: #A34A3D;
-  --line: #E6D8C6;
+  --line: #E8DCF0;
   --shadow: 0 8px 24px rgba(43, 27, 20, 0.10);
   --radius-lg: 22px;
   --radius-md: 14px;
@@ -54,7 +54,7 @@ img { max-width: 100%; display: block; }
 /* ---------- Header ---------- */
 .site-header {
   background: var(--espresso);
-  color: #FBF2E9;
+  color: #F6EEFB;
   padding: 28px 0 22px;
   border-radius: 0 0 28px 28px;
   position: relative;
@@ -66,16 +66,16 @@ img { max-width: 100%; display: block; }
   right: -40px; top: -60px;
   width: 180px; height: 180px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(200,138,46,0.35), transparent 70%);
+  background: radial-gradient(circle, rgba(224,105,158,0.35), transparent 70%);
 }
 .store-name {
   font-size: 28px;
-  color: #FBF2E9;
+  color: #F6EEFB;
 }
 .tagline {
   margin-top: 6px;
   font-size: 15px;
-  color: #E4C9A8;
+  color: #EBCBEF;
   font-style: italic;
 }
 .search-row {
@@ -89,10 +89,10 @@ img { max-width: 100%; display: block; }
   border-radius: 999px;
   border: none;
   background: rgba(255,255,255,0.12);
-  color: #FBF2E9;
+  color: #F6EEFB;
   font-size: 15px;
 }
-.search-input::placeholder { color: #C9AF92; }
+.search-input::placeholder { color: #CBA8DA; }
 .search-input:focus { outline: 2px solid var(--honey); }
 
 /* ---------- Categories ---------- */
@@ -261,13 +261,13 @@ img { max-width: 100%; display: block; }
 /* ---------- Footer ---------- */
 .footer {
   background: var(--espresso);
-  color: #E4C9A8;
+  color: #EBCBEF;
   padding: 30px 18px 90px;
   border-radius: 28px 28px 0 0;
   margin-top: 10px;
 }
 .footer .store-name { font-size: 20px; margin-bottom: 10px; }
-.footer-line { font-size: 13.5px; margin: 6px 0; color: #D9BE9C; }
+.footer-line { font-size: 13.5px; margin: 6px 0; color: #E3C3EC; }
 .footer-social { display: flex; gap: 10px; margin-top: 14px; }
 .footer-social a {
   border: 1px solid rgba(228,201,168,0.4);
@@ -290,11 +290,11 @@ img { max-width: 100%; display: block; }
    ============================================================ */
 .admin-body { background: var(--peach-bg); min-height: 100vh; }
 .admin-header {
-  background: var(--espresso); color: #FBF2E9;
+  background: var(--espresso); color: #F6EEFB;
   padding: 18px 18px; display: flex; align-items: center; justify-content: space-between;
 }
 .admin-header .title { font-family: "Fraunces", serif; font-size: 19px; }
-.admin-header button { background: transparent; border: 1px solid rgba(255,255,255,0.35); color: #FBF2E9; border-radius: 999px; padding: 7px 14px; font-size: 13px; }
+.admin-header button { background: transparent; border: 1px solid rgba(255,255,255,0.35); color: #F6EEFB; border-radius: 999px; padding: 7px 14px; font-size: 13px; }
 
 .tabbar {
   display: flex; gap: 6px; overflow-x: auto;
@@ -365,11 +365,11 @@ img { max-width: 100%; display: block; }
 
 .toast {
   position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-  background: var(--espresso); color: #FBF2E9; padding: 11px 20px; border-radius: 999px;
+  background: var(--espresso); color: #F6EEFB; padding: 11px 20px; border-radius: 999px;
   font-size: 13.5px; box-shadow: var(--shadow); z-index: 100;
 }
 
-.skeleton { background: linear-gradient(90deg, var(--line) 25%, #f0e5d3 37%, var(--line) 63%); background-size: 400% 100%; animation: shimmer 1.4s infinite; border-radius: var(--radius-md); }
+.skeleton { background: linear-gradient(90deg, var(--line) 25%, #f2e2f7 37%, var(--line) 63%); background-size: 400% 100%; animation: shimmer 1.4s infinite; border-radius: var(--radius-md); }
 @keyframes shimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
 
 @media (prefers-reduced-motion: reduce) {
