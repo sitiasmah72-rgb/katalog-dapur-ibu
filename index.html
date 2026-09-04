@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Rumah Dessert Dapur Ibu — Katalog</title>
+<meta name="description" content="Katalog dessert Rumah Dessert Dapur Ibu — cake, cheesecake, tart & lebih lagi." />
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#2B1B14" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <h1 class="store-name" id="storeName">Rumah Dessert Dapur Ibu</h1>
+    <p class="tagline" id="tagline">Manis yang dibuat dengan hati.</p>
+    <div class="search-row">
+      <input type="text" class="search-input" id="searchInput" placeholder="Cari dessert... cth: Biscoff" />
+    </div>
+  </div>
+</header>
+
+<div class="cat-scroll" id="catScroll">
+  <!-- category chips diisi oleh JS -->
+</div>
+
+<div class="special-strip" id="specialStrip" style="display:none;">
+  <div class="wrap">
+    <div class="special-title">⭐ TODAY'S SPECIAL</div>
+    <div class="special-scroll" id="specialScroll"></div>
+  </div>
+</div>
+
+<h2 class="section-title">Katalog</h2>
+<div class="grid" id="productGrid">
+  <!-- product cards diisi oleh JS -->
+</div>
+
+<footer class="footer" id="footerInfo">
+  <div class="wrap">
+    <div class="store-name display" id="footerStoreName">Rumah Dessert Dapur Ibu</div>
+    <div class="footer-line" id="footerHours"></div>
+    <div class="footer-line" id="footerAddress"></div>
+    <div class="footer-line" id="footerWhatsapp"></div>
+    <div class="footer-social" id="footerSocial"></div>
+  </div>
+</footer>
+
+<a href="#" class="fab-whatsapp" id="fabWhatsapp" aria-label="Order via WhatsApp" style="display:none;">💬</a>
+
+<!-- Product detail modal -->
+<div class="modal-overlay" id="modalOverlay" style="display:none;">
+  <div class="modal">
+    <div class="modal-wrap">
+      <button class="modal-close" id="modalClose">✕</button>
+      <img id="modalImg" src="" alt="" />
+    </div>
+    <div class="modal-body">
+      <h2 class="display" id="modalName" style="font-size:21px;"></h2>
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="modal-meta" id="modalMeta"></div>
+      <div id="modalDescWrap">
+        <div class="modal-section-label">Description</div>
+        <div class="modal-text" id="modalDesc"></div>
+      </div>
+      <div id="modalIngWrap" style="display:none;">
+        <div class="modal-section-label">Ingredients</div>
+        <div class="modal-text" id="modalIng"></div>
+      </div>
+      <div id="modalNotesWrap" style="display:none;">
+        <div class="modal-section-label">Nota</div>
+        <div class="modal-text" id="modalNotes"></div>
+      </div>
+      <a href="#" class="btn btn-whatsapp" id="modalWhatsapp" target="_blank" rel="noopener">
+        💬 Order via WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/catalog.js"></script>
+</body>
+</html>

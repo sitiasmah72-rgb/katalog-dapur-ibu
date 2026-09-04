@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Admin — Rumah Dessert Dapur Ibu</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="admin-body">
+
+<!-- LOGIN VIEW -->
+<div id="loginView" class="login-wrap">
+  <h2 class="display">Admin Login</h2>
+  <p>Rumah Dessert Dapur Ibu</p>
+  <div class="field">
+    <label>Email</label>
+    <input type="email" id="loginEmail" placeholder="admin@email.com" />
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <input type="password" id="loginPassword" placeholder="••••••••" />
+  </div>
+  <button class="btn-primary" id="loginBtn">Log Masuk</button>
+  <div class="error-text" id="loginError"></div>
+</div>
+
+<!-- DASHBOARD VIEW -->
+<div id="dashView" style="display:none;">
+  <div class="admin-header">
+    <div class="title">Admin Dashboard</div>
+    <button id="logoutBtn">Log Keluar</button>
+  </div>
+
+  <div class="tabbar">
+    <button class="tab-btn active" data-tab="products">Produk</button>
+    <button class="tab-btn" data-tab="categories">Kategori</button>
+    <button class="tab-btn" data-tab="settings">Settings</button>
+    <button class="tab-btn" data-tab="qr">QR Code</button>
+  </div>
+
+  <div class="admin-panel">
+
+    <!-- PRODUCTS TAB -->
+    <div class="tab-panel" id="tab-products">
+      <button class="btn-primary" id="addProductBtn" style="margin-bottom:14px;">+ Add New Product</button>
+      <div id="productList"></div>
+    </div>
+
+    <!-- CATEGORIES TAB -->
+    <div class="tab-panel" id="tab-categories" style="display:none;">
+      <div class="panel-card">
+        <h3>Tambah Kategori</h3>
+        <div class="field-row">
+          <div class="field"><input type="text" id="newCategoryName" placeholder="Nama kategori" /></div>
+        </div>
+        <button class="btn-primary" id="addCategoryBtn">Tambah</button>
+      </div>
+      <div id="categoryList"></div>
+    </div>
+
+    <!-- SETTINGS TAB -->
+    <div class="tab-panel" id="tab-settings" style="display:none;">
+      <div class="panel-card">
+        <h3>Store Settings</h3>
+        <div class="field"><label>Store Name</label><input id="s_store_name" /></div>
+        <div class="field"><label>Logo URL</label><input id="s_logo_url" placeholder="https://..." /></div>
+        <div class="field"><label>Tagline</label><input id="s_tagline" /></div>
+        <div class="field"><label>Nombor WhatsApp (cth: 60192858285)</label><input id="s_whatsapp" /></div>
+        <div class="field"><label>Alamat</label><textarea id="s_address"></textarea></div>
+        <div class="field"><label>Waktu Operasi</label><input id="s_operating_hours" placeholder="Isnin-Sabtu, 9am-6pm" /></div>
+        <div class="field"><label>Instagram (URL)</label><input id="s_instagram" /></div>
+        <div class="field"><label>Facebook (URL)</label><input id="s_facebook" /></div>
+        <div class="field"><label>TikTok (URL)</label><input id="s_tiktok" /></div>
+        <div class="field"><label>Google Maps (URL)</label><input id="s_google_maps" /></div>
+      </div>
+
+      <div class="panel-card">
+        <h3>Catalog Settings</h3>
+        <div class="field"><label>Currency</label><input id="s_currency" /></div>
+        <div class="toggle-row"><span>Show Price</span><input type="checkbox" id="s_show_price" /></div>
+        <div class="toggle-row"><span>Show Sold Out Products</span><input type="checkbox" id="s_show_sold_out" /></div>
+        <div class="toggle-row"><span>Show Ingredients</span><input type="checkbox" id="s_show_ingredients" /></div>
+        <div class="toggle-row"><span>Show Stock Quantity</span><input type="checkbox" id="s_show_stock_quantity" /></div>
+        <div class="toggle-row"><span>Enable WhatsApp Button</span><input type="checkbox" id="s_enable_whatsapp_button" /></div>
+        <div class="field" style="margin-top:10px;"><label>Low Stock Threshold (auto SOLD OUT bila stock = 0)</label><input type="number" id="s_low_stock_threshold" /></div>
+      </div>
+      <button class="btn-primary" id="saveSettingsBtn">Simpan Settings</button>
+    </div>
+
+    <!-- QR CODE TAB -->
+    <div class="tab-panel" id="tab-qr" style="display:none;">
+      <div class="panel-card qr-box">
+        <h3>My QR Code</h3>
+        <p style="font-size:13px;color:var(--espresso-soft);margin-bottom:14px;">
+          QR ini membawa pelanggan terus ke katalog anda. Ia tidak berubah walaupun produk ditambah/diubah.
+        </p>
+        <div id="qrcode-canvas"></div>
+        <p style="font-size:12px;color:var(--espresso-soft);margin-top:10px;word-break:break-all;" id="qrUrlDisplay"></p>
+        <div class="qr-actions">
+          <button class="btn-outline" id="downloadPngBtn">Download PNG</button>
+          <button class="btn-outline" id="downloadSvgBtn">Download SVG</button>
+          <button class="btn-outline" id="printQrBtn">Print</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PRODUCT FORM MODAL -->
+<div class="modal-overlay" id="productModalOverlay" style="display:none;align-items:center;justify-content:center;">
+  <div class="modal" style="border-radius:var(--radius-lg);">
+    <div class="modal-body">
+      <h2 class="display" id="productFormTitle" style="font-size:19px;margin-bottom:14px;">Add Product</h2>
+
+      <div class="field">
+        <label>Gambar Produk</label>
+        <img id="imgPreview" class="image-preview" style="display:none;" />
+        <div class="image-drop" id="imageDropZone">Tekan untuk pilih gambar (telefon / komputer)</div>
+        <input type="file" id="imageFileInput" accept="image/*" style="display:none;" />
+      </div>
+
+      <div class="field"><label>Product Name</label><input id="p_name" /></div>
+      <div class="field">
+        <label>Category</label>
+        <select id="p_category_id"></select>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Price (RM)</label><input type="number" step="0.01" id="p_price" /></div>
+        <div class="field"><label>Stock Quantity</label><input type="number" id="p_stock_quantity" /></div>
+      </div>
+      <div class="field"><label>Description</label><textarea id="p_description"></textarea></div>
+      <div class="field-row">
+        <div class="field"><label>Size</label><input id="p_size" /></div>
+        <div class="field"><label>Portion</label><input id="p_portion" /></div>
+      </div>
+      <div class="field"><label>Ingredients</label><textarea id="p_ingredients"></textarea></div>
+      <div class="field"><label>Notes</label><textarea id="p_notes"></textarea></div>
+
+      <div class="field">
+        <label>Stock Status</label>
+        <select id="p_stock_status">
+          <option value="AVAILABLE">🟢 AVAILABLE</option>
+          <option value="LOW_STOCK">🟡 LOW STOCK</option>
+          <option value="SOLD_OUT">🔴 SOLD OUT</option>
+          <option value="HIDDEN">⚪ HIDDEN</option>
+        </select>
+      </div>
+      <div class="toggle-row"><span>Auto stock status (ikut stock quantity)</span><input type="checkbox" id="p_auto_stock_status" checked /></div>
+      <div class="toggle-row"><span>Today's Special (featured)</span><input type="checkbox" id="p_is_featured" /></div>
+      <div class="toggle-row"><span>Seasonal / Limited</span><input type="checkbox" id="p_is_seasonal" /></div>
+      <div class="toggle-row"><span>Display di katalog (visible)</span><input type="checkbox" id="p_is_visible" checked /></div>
+
+      <div style="display:flex; gap:10px; margin-top:18px;">
+        <button class="btn-outline" id="deleteProductBtn" style="display:none;">Padam</button>
+        <button class="btn-outline" id="cancelProductBtn" style="flex:1;">Batal</button>
+        <button class="btn-primary" id="saveProductBtn" style="flex:1;">Save</button>
+      </div>
+      <div class="error-text" id="productFormError"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" style="display:none;"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

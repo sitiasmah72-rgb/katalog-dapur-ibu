@@ -1,0 +1,10 @@
+{
+  "name": "Rumah Dessert Dapur Ibu",
+  "short_name": "Dapur Ibu",
+  "description": "Katalog dessert Rumah Dessert Dapur Ibu",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#FBF2E9",
+  "theme_color": "#2B1B14",
+  "icons": []
+}
